@@ -1,0 +1,46 @@
+import imageAvatar from '@/images/avatar.jpg'
+
+export const article = {
+  date: '2022-02-01',
+  title: 'How to test every widget in Flutter?',
+  description: 'By looking at Flutter’s repository tests',
+  author: {
+    name: 'Bartosz Wiśniewski',
+    role: 'Fullstack Developer',
+    image: { src: imageAvatar },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  themeColor: '#111827',
+  keywords: ['dart', 'test', 'flutter'],
+}
+
+# How to test every widget in Flutter?
+
+I think everyone who wrote some widget tests had a moment where they didn’t know how to test their widget that uses some of the widgets from Flutter’s Material or Cupertino widgets. It’s often not obvious how to do it so it’s definitely not a reason to be ashamed asking questions like “How to test DropdownButton?”, “How to get Slider into a specific position?” or “How to test selecting a date using showDatePicker?”.
+
+I could put here snippets on how to do it, but you probably already have them on your machine.
+
+![Shocked donkey kong](./kong.gif)
+
+So in case you didn’t know, a Flutter installation requires you to download the whole Flutter repository. This repository aside from the source code also contains tests. Tests for everything inside Flutter, since they do care about tests. These tests are often tricky, non-trivial, or very specific. It’s hard to find tests like that in any tutorial.
+
+![art tutorials be like meme](./arttutorials.jpeg)
+
+So Flutter repository is a huuuuge source of great widget tests that you can learn from. Let’s say I want to see tests for Slider. You can find tests for that inside [packages/flutter/test/material/slider_test.dart](https://github.com/flutter/flutter/blob/master/packages/flutter/test/material/slider_test.dart).
+
+CupertinoTimePicker? No problem! Similar path [packages/flutter/test/cupertino/date_picker_test.dart](https://github.com/flutter/flutter/blob/master/packages/flutter/test/cupertino/date_picker_test.dart)
+
+And you don’t need to browse GitHub for that - you can open your local Flutter repository with your favorite editor. I wouldn't trust GitHub search, your VS Code or Android Studio can do much better.
+
+### Don’t Repeat Yourself
+
+Sometimes getting something into the desired state can be a bit complex. If you find yourself having to do that often in your tests make sure to extract this logic into some function or method. like I did with my `clickNextPageButton` or `_chooseDate`. This really improves the readability of your tests, which is crucial for the idea of tests to work properly.
+
+Hope you found this post helpful. I personally love learning from examples! Or maybe I am just copying pasting them 🤔 Anyway.
+
+Happy coding! 💙

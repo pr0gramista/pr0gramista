@@ -1,0 +1,95 @@
+import imageAvatar from '@/images/avatar.jpg'
+
+export const article = {
+  date: '2022-02-09',
+  title: 'Fix your Express error handling now',
+  description:
+    'As you use async/await in your Express handlers you might have noticed that errors are not handled properly. Let’s fix that.',
+  author: {
+    name: 'Bartosz Wiśniewski',
+    role: 'Fullstack Developer',
+    image: { src: imageAvatar },
+  },
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  themeColor: '#111827',
+  keywords: ['express', 'nodejs', 'javascript', 'typescript'],
+}
+
+# Fix your Express error handling now
+
+Express is probably one of the most influential packages in the Node.js world. It gave us an extremely easy-to-use interface for building REST APIs. It’s so popular that whatever can be put into middleware has probably one made for express already. Talk pino, jwt, validator, fileupload, basic-auth, http-proxy, and countless others. No wonder why people like to use it.
+
+### Promises, async, await
+
+Promises are now the standard for async operations, especially since we also got async functions and await keyword, which totally removed the need for callbacks, thus preventing so-called callback hells.
+
+Now you would think that one of the most popular packages in the world would just work with them, right? Well, not exactly.
+
+When Express was initially developed Promises were not really a standard yet so instead, everyone was using callbacks. While the JS world evolved there is still a lot of callback-based APIs, especially in Node itself, like in the [fs](https://nodejs.org/api/fs.html#callback-example) module. Luckily there is either a version with Promise API as well or we can actually use a utility called [promisify](https://nodejs.org/api/util.html#utilpromisifyoriginal).
+
+### Express kind of sucks
+
+Express is not actively developed, which is understandable - in the end, it was meant to be unopinionated and minimalist. If something is great why bother changing that?
+
+Except that there is actually version 5 of Express in “development”. It’s been like that for over **7 YEARS** - 5.0.0-alpha1 was released in 2014 and it actually does improve a couple of things including the main problem of this post - **error handling of Promises**.
+
+Yeah, if you read the [documentation for error handling](https://expressjs.com/en/guide/error-handling.html) you would learn that error handling of promises is not done by Express - you have to do it yourself unless you are running Express 5.
+
+So what happens when you ignore the docs? You will get the greatest exception in Node.js - unhandled promise rejection, which by default makes your process crash if you are using newer Node.js. Your Express error handler definitely will not be called and even the response will not be sent out to the client, so you won’t even see a 500 Internal Server Error. Just a timeout.
+
+An example of how not to handle async errors:
+
+```jsx
+const express = require('express')
+
+const app = express()
+
+app.get('/boom', (req, res) => {
+  throw 'This will be handled'
+})
+
+app.get('/boomasync', async (req, res) => {
+  throw 'This will not be handled'
+})
+
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+  console.error(err)
+  res.status(500).send('Oh no!')
+})
+
+app.listen(3000, () => console.log('Listening on 3000!'))
+```
+
+Funny enough for a long time, I believe Node.js 14 was still like that, this unhandled promise rejection would only make an ugly log in the console. The default was not changed for a long time because people were afraid it wasn’t very user-friendly. I encourage you to check out the [PR](https://github.com/nodejs/node/issues/20392) and [post](https://nodejs.medium.com/node-js-promise-reject-use-case-survey-98e3328340c9) about it.
+
+![GitHub comment: trigger BSOD to teach users](./bsod.png)
+
+A brilliantly evil idea 😈
+
+### Fix
+
+There is a lot of ways to fix this issue. You can just put `.catch` after every handler. You can use Express 5, the alpha version. You can use a custom router or middleware that handles this. You can use some magic patching package like [express-async-errors](https://www.npmjs.com/package/express-async-errors). You can also not use Express.
+
+All of these have some trade-offs, but I was happy with patching the express internals in existing codebases. For new projects, I rather use something better than Express.
+
+### TypeScript
+
+Another problem I have with Express is in its TypeScript support. The definitions assume that the Request object is always the same, but the reality is completely different. Adding new fields to `req` is a common method for dependency injection. Take a look at how [pino integrates with Express](https://github.com/pinojs/pino/blob/master/docs/web.md#pino-with-express). It is adding a `req.log` object that you can use in your handler. However, since the definitions are constant TypeScript will scream at your code when you’ll try to use it.
+
+Of course, you can just always declare the type yourself or you can use module augmentation, but that is not da wae.
+
+### Final words
+
+There are many alternatives for Express - Koa, Hapi, Fastify, Hono, Nest.js are just a small sample of them. I personally like Koa. On the surface, it is very much like Express with some little modifications, but the ecosystem is much smaller. Definitely worth checking out.
+
+I have found many senior developers not knowing about this problem so do ask your colleagues, this might be an interesting interview question. I even feel a bit stupid to post about it so late.
+
+Happy coding!
