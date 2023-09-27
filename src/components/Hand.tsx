@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
-export type HandProps = {}
+export type HandProps = {};
 
 export default function Hand({}: HandProps) {
   return (
@@ -15,5 +15,5 @@ export default function Hand({}: HandProps) {
     >
       👋
     </motion.span>
-  )
+  );
 }

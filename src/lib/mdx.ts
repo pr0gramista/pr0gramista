@@ -1,5 +1,5 @@
-import { type ImageProps } from 'next/image'
-import glob from 'fast-glob'
+import { type ImageProps } from 'next/image';
+import glob from 'fast-glob';
 
 async function loadEntries<T extends { date: string }>(
   directory: string,
@@ -11,33 +11,33 @@ async function loadEntries<T extends { date: string }>(
         async (filename) => {
           let metadata = (await import(`../app/${directory}/${filename}`))[
             metaName
-          ] as T
+          ] as T;
           return {
             ...metadata,
             metadata,
             href: `/${directory}/${filename.replace(/\/page\.mdx$/, '')}`,
-          }
+          };
         },
       ),
     )
-  ).sort((a, b) => b.date.localeCompare(a.date))
+  ).sort((a, b) => b.date.localeCompare(a.date));
 }
 
-type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
+type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string };
 
-export type MDXEntry<T> = T & { href: string; metadata: T }
+export type MDXEntry<T> = T & { href: string; metadata: T };
 
 export interface Article {
-  date: string
-  title: string
-  description: string
+  date: string;
+  title: string;
+  description: string;
   author: {
-    name: string
-    role: string
-    image: ImagePropsWithOptionalAlt
-  }
+    name: string;
+    role: string;
+    image: ImagePropsWithOptionalAlt;
+  };
 }
 
 export function loadArticles() {
-  return loadEntries<Article>('blog', 'article')
+  return loadEntries<Article>('blog', 'article');
 }

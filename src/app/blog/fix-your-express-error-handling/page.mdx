@@ -1,4 +1,4 @@
-import imageAvatar from '@/images/avatar.jpg'
+import imageAvatar from '@/images/avatar.jpg';
 
 export const article = {
   date: '2022-02-09',
@@ -10,7 +10,7 @@ export const article = {
     role: 'Fullstack Developer',
     image: { src: imageAvatar },
   },
-}
+};
 
 export const metadata = {
   title: article.title,
@@ -18,7 +18,7 @@ export const metadata = {
   author: { name: article.author.name },
   themeColor: '#111827',
   keywords: ['express', 'nodejs', 'javascript', 'typescript'],
-}
+};
 
 # Fix your Express error handling now
 
@@ -45,27 +45,27 @@ So what happens when you ignore the docs? You will get the greatest exception in
 An example of how not to handle async errors:
 
 ```jsx
-const express = require('express')
+const express = require('express');
 
-const app = express()
+const app = express();
 
 app.get('/boom', (req, res) => {
-  throw 'This will be handled'
-})
+  throw 'This will be handled';
+});
 
 app.get('/boomasync', async (req, res) => {
-  throw 'This will not be handled'
-})
+  throw 'This will not be handled';
+});
 
 app.use((err, req, res, next) => {
   if (res.headersSent) {
-    return next(err)
+    return next(err);
   }
-  console.error(err)
-  res.status(500).send('Oh no!')
-})
+  console.error(err);
+  res.status(500).send('Oh no!');
+});
 
-app.listen(3000, () => console.log('Listening on 3000!'))
+app.listen(3000, () => console.log('Listening on 3000!'));
 ```
 
 Funny enough for a long time, I believe Node.js 14 was still like that, this unhandled promise rejection would only make an ugly log in the console. The default was not changed for a long time because people were afraid it wasn’t very user-friendly. I encourage you to check out the [PR](https://github.com/nodejs/node/issues/20392) and [post](https://nodejs.medium.com/node-js-promise-reject-use-case-survey-98e3328340c9) about it.

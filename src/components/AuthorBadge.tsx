@@ -1,10 +1,10 @@
-import { Article } from '@/lib/mdx'
-import Image from 'next/image'
+import { Article } from '@/lib/mdx';
+import Image from 'next/image';
 
 export type AuthorBadgeProps = {
-  author: Article['author']
-  date: Article['date']
-}
+  author: Article['author'];
+  date: Article['date'];
+};
 
 export default function AuthorBadge({ author, date }: AuthorBadgeProps) {
   return (
@@ -22,5 +22,5 @@ export default function AuthorBadge({ author, date }: AuthorBadgeProps) {
         <time className="block font-mono text-sm text-gray-500">{date}</time>
       </div>
     </div>
-  )
+  );
 }

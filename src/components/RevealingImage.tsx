@@ -1,29 +1,29 @@
-'use client'
+'use client';
 
-import { useRef } from 'react'
-import Image, { type ImageProps } from 'next/image'
+import { useRef } from 'react';
+import Image, { type ImageProps } from 'next/image';
 import {
   motion,
   useMotionTemplate,
   useScroll,
   useTransform,
-} from 'framer-motion'
+} from 'framer-motion';
 
-const MotionImage = motion(Image)
+const MotionImage = motion(Image);
 
 export type RevealingImageProps = Pick<
   ImageProps,
   'src' | 'sizes' | 'quality' | 'className'
-> & { alt?: string }
+> & { alt?: string };
 
 export default function RevealingImage(props: RevealingImageProps) {
-  const ref = useRef<React.ElementRef<'div'>>(null)
+  const ref = useRef<React.ElementRef<'div'>>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 70%', 'end 30%'],
-  })
-  const grayscale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0, 1])
-  const filter = useMotionTemplate`grayscale(${grayscale})`
+  });
+  const grayscale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0, 1]);
+  const filter = useMotionTemplate`grayscale(${grayscale})`;
 
   return (
     <div ref={ref} className="group relative">
@@ -35,5 +35,5 @@ export default function RevealingImage(props: RevealingImageProps) {
         <Image alt="" {...props} />
       </div>
     </div>
-  )
+  );
 }

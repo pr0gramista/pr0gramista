@@ -1,15 +1,15 @@
-import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
+import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
 
 export type LogoProps = {
-  className?: string
-  variant?: 'light' | 'dark'
-}
+  className?: string;
+  variant?: 'light' | 'dark';
+};
 
 const styles = {
   light: 'text-white',
   dark: 'text-gray-700',
-}
+};
 
 export default function Logo({ className, variant = 'light' }: LogoProps) {
   return (
@@ -26,5 +26,5 @@ export default function Logo({ className, variant = 'light' }: LogoProps) {
         <span className="animate-blink">{'_'}</span>
       </span>
     </Link>
-  )
+  );
 }

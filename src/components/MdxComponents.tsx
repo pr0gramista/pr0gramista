@@ -1,5 +1,5 @@
-import RevealingImage from '@/components/RevealingImage'
-import { twMerge } from 'tailwind-merge'
+import RevealingImage from '@/components/RevealingImage';
+import { twMerge } from 'tailwind-merge';
 
 export const MdxComponents = {
   img: function MdxImage({
@@ -19,7 +19,7 @@ export const MdxComponents = {
           className="w-full object-cover"
         />
       </div>
-    )
+    );
   },
   table: function MdxTable({
     className,
@@ -36,7 +36,7 @@ export const MdxComponents = {
           <table {...props} />
         </div>
       </div>
-    )
+    );
   },
   wrapper({
     children,
@@ -47,6 +47,6 @@ export const MdxComponents = {
       <div className={twMerge('typography mx-auto max-w-3xl', className)}>
         {children}
       </div>
-    )
+    );
   },
-}
+};

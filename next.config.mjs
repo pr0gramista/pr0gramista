@@ -1,9 +1,9 @@
-import rehypeShiki from '@leafac/rehype-shiki'
-import nextMDX from '@next/mdx'
-import { recmaImportImages } from 'recma-import-images'
-import remarkGfm from 'remark-gfm'
-import remarkUnwrapImages from 'remark-unwrap-images'
-import shiki from 'shiki'
+import rehypeShiki from '@leafac/rehype-shiki';
+import nextMDX from '@next/mdx';
+import { recmaImportImages } from 'recma-import-images';
+import remarkGfm from 'remark-gfm';
+import remarkUnwrapImages from 'remark-unwrap-images';
+import shiki from 'shiki';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,12 +15,12 @@ const nextConfig = {
     // loader: 'custom',
     // loaderFile: './scripts/image-loader.js',
   },
-}
+};
 
 export default async function config() {
   let highlighter = await shiki.getHighlighter({
     theme: 'one-dark-pro',
-  })
+  });
 
   let withMDX = nextMDX({
     extension: /\.mdx$/,
@@ -29,7 +29,7 @@ export default async function config() {
       rehypePlugins: [[rehypeShiki, { highlighter }]],
       remarkPlugins: [remarkGfm, remarkUnwrapImages],
     },
-  })
+  });
 
-  return withMDX(nextConfig)
+  return withMDX(nextConfig);
 }

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,mdx,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,mdx.md}\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

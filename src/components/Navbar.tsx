@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import Logo from './Logo'
+import Link from 'next/link';
+import Logo from './Logo';
 
-export type NavbarProps = {}
+export type NavbarProps = {};
 
 export default function Navbar({}: NavbarProps) {
   return (
@@ -26,5 +26,5 @@ export default function Navbar({}: NavbarProps) {
         </div>
       </div>
     </nav>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import AuthorBadge from '@/components/AuthorBadge'
-import { loadArticles } from '@/lib/mdx'
-import { Metadata } from 'next'
-import Link from 'next/link'
+import AuthorBadge from '@/components/AuthorBadge';
+import { loadArticles } from '@/lib/mdx';
+import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'pr0gramista | Blog',
@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   ],
   themeColor: '#111827',
   keywords: ['blog', 'articles', 'posts'],
-}
+};
 
-export type BlogProps = {}
+export type BlogProps = {};
 
 export default async function Blog({}: BlogProps) {
-  const articles = await loadArticles()
+  const articles = await loadArticles();
 
   return (
     <div className="mx-auto mt-6 max-w-3xl space-y-4">
@@ -43,8 +43,8 @@ export default async function Blog({}: BlogProps) {
             <div className="mb-2">{article.description}</div>
             <AuthorBadge author={article.author} date={article.date} />
           </article>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

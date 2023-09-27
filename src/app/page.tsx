@@ -1,16 +1,16 @@
-import Socials from '@/components/Socials'
-import AuthorBadge from '@/components/AuthorBadge'
-import { loadArticles } from '@/lib/mdx'
-import Link from 'next/link'
-import AboutMdx from './about.mdx'
-import Hand from '@/components/Hand'
-import Crab from '@/components/Crab'
-import Polish from '@/components/Polish'
+import Socials from '@/components/Socials';
+import AuthorBadge from '@/components/AuthorBadge';
+import { loadArticles } from '@/lib/mdx';
+import Link from 'next/link';
+import AboutMdx from './about.mdx';
+import Hand from '@/components/Hand';
+import Crab from '@/components/Crab';
+import Polish from '@/components/Polish';
 
-export type AboutProps = {}
+export type AboutProps = {};
 
 export default async function About({}: AboutProps) {
-  const articles = await loadArticles()
+  const articles = await loadArticles();
 
   return (
     <div className="mx-auto mt-6 max-w-3xl">
@@ -46,9 +46,9 @@ export default async function About({}: AboutProps) {
               </Link>
               <div className="mb-2">{article.description}</div>
             </article>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

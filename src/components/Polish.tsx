@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { X } from '@phosphor-icons/react'
-import { useEffect, useState } from 'react'
-import { Transition } from '@headlessui/react'
+import { X } from '@phosphor-icons/react';
+import { useEffect, useState } from 'react';
+import { Transition } from '@headlessui/react';
 
-export type PolishProps = {}
+export type PolishProps = {};
 
 export default function Polish({}: PolishProps) {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const ignored = localStorage.getItem('polish_ignored') === 'true'
-    setVisible(!ignored && window.navigator?.languages?.includes('pl'))
-  }, [])
+    const ignored = localStorage.getItem('polish_ignored') === 'true';
+    setVisible(!ignored && window.navigator?.languages?.includes('pl'));
+  }, []);
 
   return (
     <Transition
@@ -40,8 +40,8 @@ export default function Polish({}: PolishProps) {
             <button
               type="button"
               onClick={() => {
-                setVisible(false)
-                localStorage.setItem('polish_ignored', 'true')
+                setVisible(false);
+                localStorage.setItem('polish_ignored', 'true');
               }}
               className="inline-flex rounded-md bg-red-50 p-0.5 text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50"
             >
@@ -52,5 +52,5 @@ export default function Polish({}: PolishProps) {
         </div>
       </div>
     </Transition>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
 import {
   DevToLogo,
   GithubLogo,
   StackOverflowLogo,
   TwitterLogo,
-} from '@phosphor-icons/react'
-import { twMerge } from 'tailwind-merge'
+} from '@phosphor-icons/react';
+import { twMerge } from 'tailwind-merge';
 
 const navigation = [
   {
@@ -29,12 +29,12 @@ const navigation = [
     href: 'https://dev.to/pr0gramista',
     icon: DevToLogo,
   },
-]
+];
 
 export type SocialsProps = {
-  variant?: 'big' | 'small'
-  className?: string
-}
+  variant?: 'big' | 'small';
+  className?: string;
+};
 
 export default function Socials({
   className,
@@ -62,5 +62,5 @@ export default function Socials({
         </a>
       ))}
     </div>
-  )
+  );
 }
