@@ -27,21 +27,25 @@ export default async function Blog({}: BlogProps) {
       </h1>
       <p>
         List of all my English blog posts. I usually post these to{' '}
-        <a className="underline" href="https://dev.to">
+        <a className="underline" href="https://dev.to/pr0gramista">
           dev.to
         </a>{' '}
-        and Medium as well.
+        and{' '}
+        <a className="underline" href="https://medium.com/@pr0gramista">
+          Medium
+        </a>{' '}
+        as well.
       </p>
       {articles.map((article) => {
         return (
           <article key={article.href} className="max-w-xl">
             <Link href={article.href}>
-              <span className="mb-1 font-mono text-2xl font-semibold hover:underline">
+              <span className="mb-1 font-mono text-xl font-semibold hover:underline">
                 {article.title}
               </span>
             </Link>
             <div className="mb-2">{article.description}</div>
-            <AuthorBadge author={article.author} date={article.date} />
+            {/* <AuthorBadge author={article.author} date={article.date} /> */}
           </article>
         );
       })}
