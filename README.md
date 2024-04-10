@@ -1,5 +1,5 @@
 # Hello there 👋
-I am a software developer, with a passion for learning and building stuff. Programming polyglot with a special place in my heart for Rust 🦀 Flutter and TypeScript 💙
+I am a software developer, with a passion for learning and building stuff. Programming polyglot with a special place in my heart for Rust 🦀 Flutter and TypeScript.
 Currently working on the world's easiest visual programming language [@turbofuro](https://github.com/turbofuro/turbofuro)
 
 - [Stack Overflow](https://stackoverflow.com/users/4698611/pr0gramista) user
