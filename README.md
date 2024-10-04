@@ -6,6 +6,7 @@ Currently working on the world's easiest visual programming language [@turbofuro
 - Co-organizer of Wrocław 🇵🇱 Java User Group
 - DIY lover - I built my own keyboard from scratch ⌨️
 - 🍺 homebrewer
+- OSS maintainer
 
 Occasionally I write something on my blog or speak at a conference, but what a fun ride it is!
 
