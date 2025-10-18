@@ -13,7 +13,7 @@ export default async function About({}: AboutProps) {
   const articles = await loadArticles();
 
   return (
-    <div className="mx-auto mt-6 max-w-3xl">
+    <div className="mx-auto mt-6 max-w-4xl">
       <h1 className="mb-2 font-mono text-xl font-semibold leading-4 sm:text-3xl">
         Hello there <Hand />
       </h1>
@@ -34,20 +34,6 @@ export default async function About({}: AboutProps) {
       </div>
       <AboutMdx />
       <Polish />
-      <h3 className="mt-2 font-mono text-xl font-semibold">Latest posts</h3>
-      <div className="mx-auto mt-2 max-w-3xl space-y-2">
-        {articles.map((article) => {
-          return (
-            <article key={article.href} className="max-w-xl">
-              <Link href={article.href}>
-                <span className="mb-1 font-mono font-semibold hover:underline">
-                  {article.title}
-                </span>
-              </Link>
-            </article>
-          );
-        })}
-      </div>
     </div>
   );
 }

@@ -32,6 +32,22 @@
     margin-top: theme('spacing.4');
   }
 
+  :where(h4) {
+    font-weight: theme('fontWeight.semibold');
+    font-family: theme('fontFamily.mono');
+    font-size: theme('fontSize.lg');
+    line-height: theme('fontSize.lg[1].lineHeight');
+    margin-top: theme('spacing.2');
+  }
+
+  :where(h5) {
+    font-weight: theme('fontWeight.semibold');
+    font-family: theme('fontFamily.mono');
+    font-size: theme('fontSize.base');
+    line-height: theme('fontSize.base[1].lineHeight');
+    margin-top: theme('spacing.2');
+  }
+
   :where(blockquote) {
     color: theme('colors.neutral.600');
     border-left: 4px solid theme('colors.neutral.200');
@@ -100,6 +116,7 @@
   /* Code blocks */
   :where(pre) {
     display: flex;
+    margin-top: theme(spacing.2);
     border-radius: theme('borderRadius.md');
     overflow-x: auto;
     margin-bottom: theme('spacing.4');

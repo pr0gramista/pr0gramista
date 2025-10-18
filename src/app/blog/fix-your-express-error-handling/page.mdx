@@ -1,22 +1,21 @@
-import imageAvatar from '@/images/avatar.jpg';
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.jpg';
 
 export const article = {
   date: '2022-02-09',
   title: 'Fix your Express error handling now',
   description:
     'As you use async/await in your Express handlers you might have noticed that errors are not handled properly. Let’s fix that.',
-  author: {
-    name: 'Bartosz Wiśniewski',
-    role: 'Fullstack Developer',
-    image: { src: imageAvatar },
-  },
+  author: me,
+  image,
+  lang: 'en'
 };
 
 export const metadata = {
   title: article.title,
   description: article.description,
   author: { name: article.author.name },
-  themeColor: '#111827',
+  ...siteMetadata,
   keywords: ['express', 'nodejs', 'javascript', 'typescript'],
 };
 
@@ -70,9 +69,8 @@ app.listen(3000, () => console.log('Listening on 3000!'));
 
 Funny enough for a long time, I believe Node.js 14 was still like that, this unhandled promise rejection would only make an ugly log in the console. The default was not changed for a long time because people were afraid it wasn’t very user-friendly. I encourage you to check out the [PR](https://github.com/nodejs/node/issues/20392) and [post](https://nodejs.medium.com/node-js-promise-reject-use-case-survey-98e3328340c9) about it.
 
-![GitHub comment: trigger BSOD to teach users](./bsod.png)
-
-A brilliantly evil idea 😈
+![GitHub comment: trigger BSOD to teach users/caption](./bsod.png)
+*A brilliantly evil idea 😈*
 
 ### Fix
 

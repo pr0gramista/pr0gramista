@@ -1,35 +1,34 @@
-import imageAvatar from '@/images/avatar.jpg';
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.jpg';
 
 export const article = {
   date: '2020-04-15',
   title: 'Dart and character encodings',
   description:
     'Or how I solved a problem with missing encoding support for Dart',
-  author: {
-    name: 'Bartosz Wiśniewski',
-    role: 'Fullstack Developer',
-    image: { src: imageAvatar },
-  },
+  author: me,
+  image,
+  lang: 'en'
 };
 
 export const metadata = {
   title: article.title,
   description: article.description,
   author: { name: article.author.name },
-  themeColor: '#111827',
+  ...siteMetadata,
   keywords: ['dart', 'encoding', 'flutter', 'package'],
 };
 
 # Dart and character encodings
 
-I work on an app that plans to use thermal printers. I am also a Stack Overflow user and I often hunt for interesting questions, especially regarding Flutter, so I saw this [question](https://stackoverflow.com/q/59475607/4698611):
+I have previously worked on an app that used thermal printers. I am also a Stack Overflow user and I often hunt for interesting questions, especially regarding Flutter, so I saw this [question](https://stackoverflow.com/q/59475607/4698611):
 
 > How to print Asian languages to a thermal printer from Flutter?
 
 This seemed pretty easy. The package for printers just could not implement all different charsets that printers use. Just add support and voila! Well, it’s not that simple.
 
-![Windows 1250](./table.png)
-Windows-1250 code page was used for languages such as Polish, Czech, Slovak, Hungarian, Slovene, Bosnian or Croatian and does not exist in Dart
+Windows 1250/caption](./table.png)
+*Windows-1250 code page was used for languages such as Polish, Czech, Slovak, Hungarian, Slovene, Bosnian or Croatian and does not exist in Dart*
 
 ## Dart is missing a lot
 

@@ -36,6 +36,8 @@ export interface Article {
     role: string;
     image: ImagePropsWithOptionalAlt;
   };
+  image?: ImagePropsWithOptionalAlt;
+  lang: 'pl' | 'en';
 }
 
 export function loadArticles() {

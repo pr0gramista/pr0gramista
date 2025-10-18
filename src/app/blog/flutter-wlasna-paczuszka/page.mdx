@@ -1,0 +1,74 @@
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.png';
+
+export const article = {
+  date: '2020-03-17',
+  title: 'Flutter i własna paczuszka',
+  description:
+    'Czyli jak stworzyć i opublikować własną paczkę na pub.dev',
+  author: me,
+  image,
+  lang: 'pl'
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  ...siteMetadata,
+  keywords: ['flutter', 'dart'],
+};
+
+# Flutter i własna paczuszka
+
+Ten post jest powiązany z [poprzednim](https://pr0gramista.pl/post/dart-i-zestaw-znakow/), gdzie opowiedziałem swoją historię walki z brakującymi kodowaniami znaków. Dziś pokażę wam jak zrobić swoją własną paczuszkę z kodem platformy tak jak ja to zrobiłem.
+
+## Nowy projekt
+Paczki, czy też pluginy to dalej projekty Flutterowe, więc najlepszym sposobem na stworzenie nowego to użycie narzędzia do generowania czyli Flutterowego CLI z odpowiednim szablonem. Domyślny szablon to aplikacja (app), ale my chcemy package, jeśli nie potrzebujesz kodu platformy albo plugin jeśli potrzebujesz. W moim przypadku potrzebowałem więc użyłem plugin.
+
+```bash
+flutter create --template=plugin awesome_package
+```
+
+Ciekawostka: awesome-package to niepoprawna nazwa Dartowej paczuszki, ale awesome_package już jest OK.
+
+Gdy generowanie się zakończy pomyślnie to wtedy można otworzyć nowy projekt w swoim ulubionym edytorze—w moim przypadku jest to Visual Studio Code.
+
+## Struktura projektu
+Struktura projektu jest bardzo podobna do struktury aplikacji Flutterowej. Kod Darta trzymamy w lib, kod platformy osobno w np. android czy ios no i testy w folderze test. Możesz się jednak zdziwić, że w lib nie ma żadnego kodu, który by umożliwiał odpalanie twojego projektu i to ma sens—dziwne by było odpalanie pluginu w jakimś eterze.
+
+Jak w takim razie przetestować manualnie swój plugin? Odpowiedź jest w folderze example w którym jest zainicjalizowana apka Flutterowa, którym celem jest bycie działających przykładem twojej paczuszki. Żyje ona w tym samym folderze i importuje kod paczki relatywnie, więc wszystkie funkcje typu hot-reloading, debugging normalnie działają.
+
+Na początku myślałem, że to strasznie dziwne rozwiązanie, ale później zauważyłem, że jest to naprawdę genialne. To taki ustandaryzowany sposób na dostarczenie przynajmniej jednego działającego przykładu większości funkcji.
+
+Teraz możesz już przejść do tworzenia twojej nowej paczuszki!
+
+## Czas publikacji
+Dobra, skończyłeś—co teraz? Najpierw, przejdźmy się po kilku 
+
+* Udostępnij swój kod na GitHubie, to nie jest wymagane, ale ułatwia wszystkim życie m.in. kontrybuowanie do twojego kodu, raportowanie problemów. Nie bój się, że ktoś cię będzie źle oceniał—w końcu robisz to za darmo
+* Otaguj (Gitem) swoje wydania paczek, tak będzie łatwiej śledzić zmiany
+* Napisz dokumentacje, przynajmniej do publicznych interfejsów. Jeśli nie wiesz jak sprawdź tę stronę dokumentacji albo zainspiruj się dokumentacją Fluttera
+* Dodaj plik README.md, spraw by twoja paczka była przystępniejsza
+* Dodaj plik CHANGELOG.md i opisuj co kolejne wydanie wprowadza lub zmienia. Ten krok jest wymagany, bo pomaga później innym migrować z wersji na wersja a przy tym pomaga uniknąć niepotrzebnych wydań.
+* Dodaj licencje w pliku LICENSE, jeśli nie wiesz którą—sprawdź choosealicense.com
+* Uzupełnij dane w pubspec.yaml
+* Sprecyzuj, które platformy są wspierane. Flutter ma do tego nowy mechanizm opisany tutaj
+* Upewnij się, że nie opublikujesz nic więcej niż co jest potrzebne. Pub automatycznie filtruje pliki używając .gitignore, więc wystarczy że sprawdzisz czy nic dodatkowego nie masz w swoim folderze np. używając polecenia git status
+* Pamiętaj też, że jest górny limit 10MB wielkości paczuszki
+* Zarejestuj się jako zweryfikowany wydawca
+
+Wiem, wiem, całkiem sporo tego. Nie musisz się jednak obawiać, bo wszystkie te punkty są w miarę proste. Pamiętaj też, że możesz użyć komendy pub publish --dry-run by sprawdzić jak pub zareaguje a jednocześnie niczego nie wysłać.
+
+## The Final Countdown
+Nadeszła ta chwila, żeby zrobić ten ostatni krok. Odpal pub publish i podążaj za instrukcjami, nie zdziw się jeśli coś jeszcze będzie trzeba zrobić. Jeśli wszystko pójdzie gładko to po chwili powinieneś otrzymać maila z potwierdzeniem, że twoja paczka jest opublikowana 🎉
+
+Kolejnym krokiem jest sprawdzenie oceny analizatora—to jest ta liczba w niebieskim kółku na stronie paczki w pub.dev. Można ją kliknąć i przejść do szczegółów oceny i zobaczyć czy coś można poprawić. Oceny popularności nie poprawisz sam, ale ona bardzo szybko rośnie wraz z użytkownikami. Pamiętaj też, że może chwila minąć zanim analizator wystawi ocenę.
+
+Ostatni krok to podzielenie się swoją pracą ze światem! Ludzie czekają. Twitter, Slack, Discord są perfekcyjnymi miejscami by się pokazać, wystarczy że napiszesz na właściwym kanale i nie będziesz spamował. 
+
+Jeśli coś stworzysz to daj mi znać!
+
+Wesołego Kodzenia 💙
+
+

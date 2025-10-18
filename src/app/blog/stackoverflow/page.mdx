@@ -1,0 +1,62 @@
+import { me, siteMetadata } from '@/lib/data';
+import image from './stackoverflow.jpg';
+
+export const article = {
+  date: '2017-05-21',
+  title: 'Stack Overflow',
+  description:
+    'Miesiąc ze Stack Overflow: wrażenia, plusy i minusy oraz wpływ na rozwój.',
+  author: me,
+  image,
+  lang: 'pl'
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  ...siteMetadata,
+  keywords: ['stackoverflow'],
+};
+
+# Stack Overflow
+
+Stack Overflow to zapewne najważniejszy serwis dla programistów jaki istnieje. Jego wpływ na naszą społeczność jest tak wielki, że następna lub już aktualna generacja programistów będzie od tego portalu uzależniona.
+
+## Moja przygoda z Stack Overflow
+Swoje przemyślenia wynikają z moich wrażeń podczas miesiąca z SO. Tak po prostu nudziłem się i pomyślałem aby zrobić sobie takie wyzwanie. Codziennie chciałem uzyskać minimum 25 reputacji lub kilka udanych rozpatrzeń flag.
+
+Efekt tej zabawy? W ciągu miesiąca osiągnąłem około 2000 punktów reputacji, prawie 100 pomocnych flag i 25 edycji postów. Odpowiadałem na pytania z różnych technologii — Java, libGDX, Unity, Python, JavaScript, Android, Firebase, API Google, PHP czy nawet Windows Phone. Ja to lubię sobie pożąglować.
+
+### Wrażenia
+Jako osoba nieśmiała, która wątpi w swój głos to Stack Overflow było dla mnie bardzo ciekawym ćwiczeniem wypowiadania się, tłumaczenia i pewności siebie, bo jest ona czasem potrzebna. Być pewnym swojego kodu, wystawić go na ocenę to nie jest prosta rzecz dla początkujących, ale warto dać się sprawdzać, bo możemy być miło zaskoczeni.
+
+> Lepiej żałować, że coś się zrobiło, niż że się tego nie zrobiło ze strachu przed dostaniem tego negatywnego punktu
+
+Satysfakcja z pomagania innym. To jest mój ulubiony element tego serwisu. Zobaczyć szczere podziękowania od zupełnie obcej osoby jest niesamowicie motywujące i poprawiające humor. Jeśli kiedyś ktoś odpowie na wasze pytanie — podziękujcie mu, to zawsze daje większego kopa niż tylko te punkty.
+
+### Nie wszystko jest bez skazy
+Stack Overflow to czasem taki dziki zachód. Pojawia się pytanie, umiesz na nie odpowiedzieć, piszesz swoją elokwentną, pełną odpowiedź... i widzisz coś takiego: 
+
+> just use jQuery, like this: 
+```javascript
+jQuery.someBullshit().moreBullshit({ objectYouDontUndestand })
+```
+
+Oczywiście już z jednym punktem. Czasem ludzie docenią twój wkład, ale zwykle po prostu pierwsza odpowiedź zadziała i nikt już nie będzie patrzył, że jest ona pozbawiona objaśnień. Tak właśnie będą programować programiści Stack Overflow — copy-paste i do widzenia.
+
+Czasem ludzie idą w drugą stronę i zapominają, że chcą pomóc człowiekowi a nie maszynie, a różnica jest taka, że maszyna od początku będzie wiedziała do czego jest lamba. Wiele razy widziałem pytanie gdzie widać, że autor jest początkującym, ale zamiast pokazać rozwiązanie na kodzie, który jest dla niego zrozumiały to pakują mu lambdy, zewnętrzne biblioteki czy jakieś dziwne triki.
+
+Trzeci problem to uwielbienie odpowiedzi na proste pytania. Na moim przykładzie. Coś bardzo prostego, wymagającego niewielkiej wiedzy o Pythonie a jest moją najwyżej punktowaną odpowiedzią. Czy to fair wobec trudnych pytań? Oczywiście jest system nagród pozwalający wystawić nagrodę za odpowiedź na pytanie, ale nawet one często nie przyciągają uwagi tych doświadczonych.
+
+### Nie tylko pytania i odpowiedzi
+No gdzie tu by można znaleźć programistów jak nie na ich ulubionym serwisie. Stack Overflow Jobs to dobrze zrobiony portal ogłoszeń prac. Oparty o tagi (prawie jak Workdone), ma dobrą wyszukiwarkę i sporo ofert. Po za tym pracodawcy szukają ludzi do pracy po Stack Overflow, jeśli ktoś widzi, że ktoś się na czymś zna i potrzebny jest ktoś taki to nie ma żadnych przeciwności aby nie zaproponować komuś takiemu pracy. Myślę też, że powiedzenie, że ma się X punktów na SO przy rozmowie o pracę może wywołać pozytywne wrażenie.
+
+Dobra dokumentacja to podstawa dobrego softu. SO nie tak dawno otworzyło swój portal z dokumentacją do wszystkiego. Stack Overflow Documentation to taka wikipedia technologii wraz z przykładami. Oprócz małej patologii jaka miała miejsce to dokumentacja SO jest całkiem przyjemna, choć jeszcze długa droga przed nią.
+
+Na koniec wspomnę o Stack Overflow Insight, czyli statystykach o nas i technologii. Oprócz znanych corocznych zestawień dostępne jest też narzędzie, nie wszystkim znane, podobne do Google Trends a jest nim Stack Overflow Trends. Jeśli jeszcze nie zajrzeliście do zestawienia z 2017 roku to polecam to zrobić, mnie zaciekawiły:
+[znajomość a zdobycie pracy](https://insights.stackoverflow.com/survey/2017#work-how-did-developers-find-their-current-job),
+[rosyjscy hakerzy](https://insights.stackoverflow.com/survey/2017#work-where-are-developers-working-remote-full-time) i
+[czy studia są ważne](https://insights.stackoverflow.com/survey/2017#developer-profile-importance-of-formal-education).
+
+

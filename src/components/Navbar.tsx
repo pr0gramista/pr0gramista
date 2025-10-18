@@ -6,7 +6,7 @@ export type NavbarProps = {};
 export default function Navbar({}: NavbarProps) {
   return (
     <nav className="bg-gray-900 p-4">
-      <div className="mx-auto flex max-w-3xl items-center">
+      <div className="mx-auto flex max-w-4xl items-center">
         <Logo />
         <div className="flex-grow" />
         <div className="flex gap-1 font-mono text-sm text-white sm:text-base md:gap-2">

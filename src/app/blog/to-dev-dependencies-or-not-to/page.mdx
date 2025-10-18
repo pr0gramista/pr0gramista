@@ -1,0 +1,193 @@
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.jpg';
+
+export const article = {
+  date: '2020-04-09',
+  title: 'devDependencies',
+  description:
+    'Czyli jak rozpętałem gównoburzę na firmowym Slacku',
+  author: me,
+  image,
+  lang: 'pl'
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  ...siteMetadata,
+  keywords: ['javascript'],
+};
+
+# devDependencies
+
+W świecie programistów są takie pytania, które od pokoleń dzielą ludzi. Spacja czy tabulatury? Klamerka w tej samej linijce czy w osobnej? Czy potrzebne są nam średniki? Nie dawno odkryłem kolejne tego typu pytanie, ale tym razem sprawa jest trochę bardziej skomplikowana.
+
+## Czym jest dependencies i devDependencies?
+Akcja dotyczy JavaScriptu, a dokładniej Node.js. Każdy projekt Node'a zawiera package.json w którym są zapisane zależności do projektu, które potem instalujemy używając npm lub yarn. Są też tzw. devDependencies czyli zależności do paczuszek, które nie są potrzebne do działania aplikacji, ale przydają się programistom. Do tej kategorii można zaliczyć biblioteki do testów, lintery, formattery i inne pluginy jak np. husky czy lint-staged.
+
+W przypadku Node.js, czyli aplikacji serwerowych (bo Node.js nie istnieje w przeglądarce) sprawa jest w miarę prosta. W dependencies są zależności, które muszą być na produkcyjnym serwerze a w devDependencies praktycznie cała reszta.
+
+## Frontend
+Na frontendzie klasycznie nic nie może być proste. 
+
+Jeśli korzystasz z bundlera np. webpack lub pośrednio z bundlera czyli react-scripts, @vue/cli-service czy @angular/compiler-cli to ten podział zależności nie jest taki jasny. Wynika to z faktu, że z punktu widzenia Node.js produkcją nie jest przeglądarka a sam bundler i moment kompilacji. Bundler tworząc naszego builda nie przejmuje się tym co jest w package.json, a zależności rozwiązuje po importach w kodzie.
+
+Z tego wynika, że w dependencies powinniśmy mieć wszystko co jest potrzebne do zbudowania aplikacji. TypeScript, node-sass czy nawet biblioteki do testowania, jeśli traktujemy testy jako konieczny etap budowania, powinny znaleźć się w sekcji dependencies.
+
+Tak właśnie robi create-react-app:
+```json
+"dependencies": {
+  "@testing-library/jest-dom": "^4.2.4",
+  "@testing-library/react": "^9.3.2",
+  "@testing-library/user-event": "^7.1.2",
+  "@types/jest": "^24.0.0",
+  "@types/node": "^12.0.0",
+  "@types/react": "^16.9.0",
+  "@types/react-dom": "^16.9.0",
+  "react": "^16.13.1",
+  "react-dom": "^16.13.1",
+  "react-scripts": "3.4.1",
+  "typescript": "~3.7.2"
+},
+```
+devDependencies są puste, ale mógłby w nim być np. dodany prettier czy husky.
+
+## Nie wszyscy jednak robią jak React
+Oto wycinki z wygenerowanych package.json z oficjalnych CLI:
+- Angulara
+  
+```json
+"dependencies": {
+  "@angular/animations": "~9.1.0",
+  "@angular/common": "~9.1.0",
+  "@angular/compiler": "~9.1.0",
+  "@angular/core": "~9.1.0",
+  "@angular/forms": "~9.1.0",
+  "@angular/platform-browser": "~9.1.0",
+  "@angular/platform-browser-dynamic": "~9.1.0",
+  "@angular/router": "~9.1.0",
+  "rxjs": "~6.5.4",
+  "tslib": "^1.10.0",
+  "zone.js": "~0.10.2"
+},
+"devDependencies": {
+  "@angular-devkit/build-angular": "~0.901.0",
+  "@angular/cli": "~9.1.0",
+  "@angular/compiler-cli": "~9.1.0",
+  "@angular/language-service": "~9.1.0",
+  "@types/node": "^12.11.1",
+  "@types/jasmine": "~3.5.0",
+  "@types/jasminewd2": "~2.0.3",
+  "codelyzer": "^5.1.2",
+  "jasmine-core": "~3.5.0",
+  "jasmine-spec-reporter": "~4.2.1",
+  "karma": "~4.4.1",
+  "karma-chrome-launcher": "~3.1.0",
+  "karma-coverage-istanbul-reporter": "~2.1.0",
+  "karma-jasmine": "~3.0.1",
+  "karma-jasmine-html-reporter": "^1.4.2",
+  "protractor": "~5.4.3",
+  "ts-node": "~8.3.0",
+  "tslint": "~6.1.0",
+  "typescript": "~3.8.3"
+}
+```
+- Vue
+  
+```json
+"dependencies": {
+  "core-js": "^3.6.4",
+  "vue": "^2.6.11"
+},
+"devDependencies": {
+  "@vue/cli-plugin-babel": "~4.2.0",
+  "@vue/cli-plugin-eslint": "~4.2.0",
+  "@vue/cli-service": "~4.2.0",
+  "babel-eslint": "^10.0.3",
+  "eslint": "^6.7.2",
+  "eslint-plugin-vue": "^6.1.2",
+  "vue-template-compiler": "^2.6.11"
+},
+```
+
+Vue i Angular robi to inaczej, przy czym Angular jest trochę niekonsekwentny i @angular/compiler jest nagle w dependencies, gdzie w zamyśle mają się znaleźć tylko te paczki, które prawdopodobnie znajdą się w naszym bundlu. Prawdopodobnie, bo tak jak wyżej o tym wspomniałem—to importy mają znaczenie. Pewność możemy mieć tylko analizując bundla.
+
+Chciałbym tutaj dodać jakąś sekcję plusów tego rozwiązania, ale poza wymienionym "jasnym" podziałem w pliku to żadnego nie ma. Technicznie to rozwiązanie jest nawet gorsze, bo tracimy możliwość odseparowania rzeczywiście niepotrzebnych paczek i np. nasze CI zawsze będzie pobierać huskiego i ustawiać hooki do gita.
+
+Dlaczego tak się dzieje? Nie wiem, ale mogę się domyślać. Jednym z możliwych powodów jest po prostu brak wiedzy czym tak naprawdę jest Node.js i wynikający z tego chaos. Ludzie po prostu googlują dependencies vs devdependencies i dostają odpowiedź.
+
+## Biblioteki
+Sprawa staje się jeszcze trudniejsza gdy weźmiemy pod uwagę biblioteki. Te powinny mieć jak najmniej dependencies a cały zestaw do testowania i budowania w devDependencies.
+
+Oto np. zależności date-fns
+```json
+"dependencies": {},
+"devDependencies": {
+  "@babel/cli": "^7.5.5",
+  "@babel/core": "^7.5.5",
+  "@babel/node": "^7.5.5",
+  ...
+  "babel-preset-power-assert": "^3.0.0",
+  "cloc": "^2.2.0",
+  "coveralls": "^3.0.6",
+  "eslint": "^5.16.0",
+  "eslint-config-prettier": "^4.3.0",
+  "firebase": "^3.7.1",
+  "flow-bin": "0.84.0",
+  "fs-promise": "^1.0.0",
+  "glob-promise": "^2.0.0",
+  "gzip-size-cli": "^1.0.0",
+  "husky": "^1.0.1",
+  "istanbul-instrumenter-loader": "^3.0.1",
+  "jest": "^24.8.0",
+  "jest-plugin-context": "^2.9.0",
+  "js-beautify": "^1.5.10",
+  "jsdoc-to-markdown": "^5.0.0",
+  "karma": "^3.1.4",
+  ...
+  "karma-webpack": "^4.0.2",
+  "lint-staged": "^7.3.0",
+  "lodash": "^4.17.15",
+  "lodash.clonedeep": "^4.5.0",
+  "mocha": "^3.5.3",
+  "moment": "^2.24.0",
+  "mz": "^2.7.0",
+  "node-fetch": "^1.7.3",
+  "power-assert": "^1.6.1",
+  "prettier": "^1.18.2",
+  "rimraf": "^2.7.1",
+  "sinon": "^7.4.1",
+  "size-limit": "^0.21.0",
+  "snazzy": "^7.0.0",
+  "systemjs": "^0.19.39",
+  "systemjs-plugin-babel": "0.0.17",
+  "typescript": "^3.7.2",
+  "webpack": "4",
+  "webpack-cli": "^3.1.2",
+  "world-countries": "^1.8.1"
+},
+```
+
+Wynika to z tego, że jeśli np. dodajesz zależność do Reacta to również pobierzesz zależności Reacta, ale już nie zależności deweloperskie. Nikt nie lubi marnować miejsca na dysku.
+
+Wniosek: jeśli ktoś będzie polegał na twojej paczce to ograniczenie sekcji dependencies na pewno będzie na plus. Podobnie powinny postępować moduły w mikrofrontendach opartych na importach, ale wiele zależy od konfiguracji.
+
+## Czy jest o co walczyć?
+Pewnie nie, chociaż czasem sam przegląd package.json daje tyle informacji by stwierdzić czy ma się do czynienia z normalnym projektem.
+
+Frontend to taki hack, że takie szczegóły są niewiele warte, ale przynajmniej można pokłócić się w pracy.
+
+## Podsumowanie
+- Teoretycznie poprawnym rozwiązaniem jest zapisanie wszystkich potrzebnych zależności do zbudowania aplikacji w dependencies
+- Jeśli tak nie zrobisz to świat się nie zawali
+- Biblioteki powinny unikać dependencies
+- Nie ma potrzeby bić się o to kto ma racje, ale mieć swoje zdanie:
+
+![Zawsze Warto](./zawszewarto.jpg)
+
+Nie mogłem się powstrzymać.
+
+[Issue, który upewnił mnie w moich przekonaniach](https://github.com/webpack/webpack/issues/520)
+
+

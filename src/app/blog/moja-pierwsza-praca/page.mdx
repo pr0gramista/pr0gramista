@@ -1,0 +1,62 @@
+import { me, siteMetadata } from '@/lib/data';
+import image from './rynek.jpg';
+
+export const article = {
+  date: '2018-05-03',
+  title: 'Moja pierwsza praca',
+  description:
+    'Jak znalazłem pierwszą pracę jako programista i pierwsze wrażenia z nowego miejsca.',
+  author: me,
+  image,
+  lang: 'pl'
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  ...siteMetadata,
+  keywords: ['praca'],
+};
+
+# Moja pierwsza praca
+
+Dziś jest wolne, a 2 dni temu było Święto Pracy, zatem to idealny czas aby podzielić się doświadczeniami z mojej pierwszej pracy i tym jak ją znalazłem.
+
+### Poszukiwania
+
+Pracy zacząłem szukać już w listopadzie 2017 i popełniłem przy tym wiele błędów, choć los też nie był mi przychylny. Najpierw pechowa rekrutacja, później pustki na rynku pracy a sukcesy na końcu. Im mniej mi zależało, tym lepiej mi wychodziło. Do tematu rekrutacji jeszcze kiedyś wrócę, może w formie prezentacji.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N6Zz-Nkkaxc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Tak rekrutują się najlepsi (podobno)
+
+Mówi się, że znajomości to jeden z najlepszych sposobów na znalezienie nowej pracy i coś w tym może być, bo właśnie tak ostatecznie dotarłem do ARC Software - małego software house’u w centrum Wrocławia.
+
+### ARC to nie korpo
+
+Jestem 12 członkiem tej firmy. Nie wiele osób ma szansę spotkać się z taką sytuacją. Ma to swoje wady i zalety. Może nie ma gaming roomu, pięknego biura czy kraftowego piwa, ale tak samo nie ma ściśle określonych stanowisk czy zasad. Panuje naprawdę luźna atmosfera i ma się świadomość, że nie piszesz kodu aby jakiś prezes zarobił 100 razy tyle co ty.
+
+### Pierwszy dzień
+
+Nie było to coś tak ekscytującego. Przyszedłem, poznałem ekipę, projekt i przez cały dzień klikałem, oglądałem i słuchałem. Pracuję na swoim sprzęcie, więc nie musiałem nic konfigurować. Nie mogę powiedzieć, że się nudziłem, ale z pewnością czekałem na coś więcej.
+
+### Pierwsze zadanie
+
+Drugiego dnia dostałem swoje pierwsze programistyczne zadanie - przenieść komponent z starszej wersji aplikacji i napisać go częściowo od nowa dla nowej wersji. Zadanie nie najprostsze, ale to mi się podobało. Nie wiem czy jadłem obiad tamtego dnia, ale bawiłem się wyśmienicie. Na koniec dnia miałem gotowy szkielet komponentu i wystarczyło tylko go podpiąć do reszty.
+
+Wiele osób podczas pierwszego spotkania z projektem czuje strach, niepewność czy zakłopotanie, ale ja poczułem się jakbym znowu miał te 11 lat i siedział przy tym mistycznym serwerze Minecrafta, no bo w końcu uczyłem się programowania przez ostatnie 5 lat. Często na pytanie "czy wiesz jak działa X" odpowiadałem:
+
+> Nie wiem, ale myślę, że to ogarnę.
+
+### Po dwóch tygodniach
+
+Projekt nie kryje przede mną większych tajemnic. Kilka rzeczy dalej sprawia mi problem, ale są to w większości problemy kwestii architektury projektu a nie “jak zrobić by zadziałało”, ale projekty mamy różne, więc w wolnym czasie dalej się rozwijam w innych kierunkach. Machine learning i IoT nadchodzę!
+
+### Porady dla kogoś kto zaczyna pracę
+
+Pytać i nie bać się pytać. Warto też nauczyć się wcześniej korzystać z Gita w współpracy z innymi, poznać zagadnienie "Trunk Based Development", nauczyć się rozkładać duże problemy na mniejsze i być optymistycznie nastawionym :)
+
+[Strona polskiego, wspomnianego Arc Software](https://arcsoftware.it/)
+
+

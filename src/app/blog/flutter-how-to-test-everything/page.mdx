@@ -1,21 +1,20 @@
-import imageAvatar from '@/images/avatar.jpg';
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.jpg';
 
 export const article = {
   date: '2022-02-01',
   title: 'How to test every widget in Flutter?',
   description: 'By looking at Flutter’s repository tests',
-  author: {
-    name: 'Bartosz Wiśniewski',
-    role: 'Fullstack Developer',
-    image: { src: imageAvatar },
-  },
+  author: me,
+  image,
+  lang: 'en'
 };
 
 export const metadata = {
   title: article.title,
   description: article.description,
   author: { name: article.author.name },
-  themeColor: '#111827',
+  ...siteMetadata,
   keywords: ['dart', 'test', 'flutter'],
 };
 

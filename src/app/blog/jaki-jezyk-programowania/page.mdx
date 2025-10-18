@@ -1,0 +1,81 @@
+import { me, siteMetadata } from '@/lib/data';
+import image from './image.jpg';
+
+export const article = {
+  date: '2017-05-06',
+  title: 'Jaki język programowania?',
+  description:
+    'Jesteś początkującym i nie wiesz od jakiego języka zacząć? Oto cztery propozycje.',
+  author: me,
+  image,
+  lang: 'pl'
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  author: { name: article.author.name },
+  ...siteMetadata,
+  keywords: ['poradnik', 'javascript', 'python', 'java', 'csharp'],
+};
+
+# Jaki język programowania?
+
+Jesteś początkującym i nie wiesz od jakiego języka zacząć? Dobrze trafiłeś, bo mam już dość tego pytania i pokażę Ci cztery języki, które mogą Ci się spodobać.
+
+![Python logo](./python.jpg)
+### Python
+Python to dynamiczny, ale silny język wysokiego poziomu. Ma prostą składnie, która wymusza na programiście pisanie ładnego kodu, co jest wielkim plusem dla początkujących. Kolejną cechą Pythona to system pakietów, który sprawia, że instalacja bibliotek (a tych jest sporo) nie będzie stanowiła problemu.
+
+Python przez swoją prostotę jest wykorzystywany głównie na 3 sposoby:
+
+Pierwszy z nich to zrobienie z Pythona języka do skryptów, czyli takich zwykłe małych programików, które mają np. przenieść plik A do folderu X etc. Implementacje intrepretera Pythona łatwo jest umieścić w swoim programie pozwalając na tworzenie pluginów jak np. w GIMPie. Zatem znajomość Pythona przydaje się nawet przy pracy przy innych programach czy nawet językach.
+
+Python znalazł też swoje miejsce w aplikacjach webowych. Trzy najpopularniejsze frameworki webowe Pythona to:
+
+- [django](https://www.djangoproject.com/) — rozbudowany, bogaty w funkcjonalności
+- [Flask](http://flask.pocoo.org/) — minimalistyczny, nastawiony na rozszerzenia
+- [Pyramid](https://trypyramid.com/) — coś pomiędzy dwoma powyższymi
+
+Trudno popełnić błąd przy ich wyborze, choć django wydaje mi się najpopularniejszy i bardzo łatwy w nauce, gdyż wiele funkcji dostajemy out-of-box.
+
+Ostatnie miejsce gdzie często spotkacie Pythona to sekcja naukowa. Przez swoją prostotę wąż został pokochany przez analityków, naukowców i nauczycieli programowania. Nie ma co się dziwić! Warto również dodać, że Python będzie dostępny dla maturzystów od roku 2018/2019.
+
+Dlaczego więc nie widzimy Pythona wszędzie? Głównie przez swoją nie zachwycającą wydajność i fakt, że aby go używać musimy mieć go zainstalowanego. Inną sprawą jest jego dynamiczne typowanie, nie jest to wada, po prostu nie tak przewidywalny jak...
+
+![Java logo](./java.jpg)
+### Java / C#
+Java i C# (platforma .NET) to dwa potężne i podobne do siebie ekosystemy. Oba skupiają się na rozwiązaniach klasy enterprise. Z tego też powodu są to języki statyczne i silne. Składnia opiera się na składni C++, ale liczba ulepszeń jest długa.
+
+Te dwa ekosystemy, dające dużo $$$, wytworzyły najlepsze narzędzia jakie możecie spotkać w świecie programowania. IntelliJ IDEA od JetBeans do Javy i Visual Studio do C# to prawdziwe kombajny. Ilość i jakość bibliotek, debuggerów, narzędzi do budowania jest nie do pobicia.
+
+Java i C# to również popularne języki do tworzenia aplikacji okienkowych i gier, za sprawą takich silników jak LWJGL/LibGDX (Java) i popularnego Unity (C#). Z aplikacjami mobilnymi też nie będzie problemu. Aplikacje dla Androida głównie są pisane w Javie. C# ma na swoją obrone (oprócz Windows Phone...) framework Xamarin, który pozwala na multiplatformowe aplikacje.
+
+JVM (Java Virtual Machine) i .NET to nie tylko Java i C#. Wchodząc do tych ekosystemów będzie mogli skorzystać z innych języków np. [Scala](https://www.scala-lang.org/) po stronie JVM czy F# po stronie .NET i korzystać wymiennie z kodu Scali i Javy. Warto zawsze mieć jakiś wybór, choćby z samej nudy pisania wciąż w tym samym.
+
+Co do C# i jego natury Microsoftu: to w ostatnich latach drastycznie się zmienia i argument, że C# działa tylko na Windowsie już nie takiej mocy.
+
+![C++ logo](./cplusplus.jpg)
+### C++
+C++ to język statyczny i słaby. Z racji na swój wiek, narzędzia i problemach z standaryzacją nie on jest najlepszym językiem do nauki. Czemu więc go tutaj umieściłem? To przez to, że on zawsze się gdzieś tam pojawia, ale zacznijmy od początku.
+
+Wszystkie języki na tej liście nie są kompilowane do kodu maszynowego oprócz C++. To właśnie ta cecha sprawia, że C++ dalej jest językiem żywych, chociaż niszowym. Każdy silnik do gier, sterownik, system operacyjny musi zacząć od C++ lub C (taki starszy brat). Nie omija to urządzeń mobilnych. Mówiłem, że apki Androida są pisane w Javie, ale istnieje coś takiego jak Android NDK (Native Development Kit), czyli zestaw do pisania natywnego kodu dla Androida.
+
+C++ to również język od którego zwykle zaczyna się programowania w szkole a to sprawia, że w sieci znajduje się wiele materiałów dla początkujących i łatwo jest o pomoc np. od nauczyciela w szkole.
+
+Zatem jeśli interesujecie się językami niskiego poziomu, czyli takich bliżej podstaw, hardwaru to C++ jest dla was.
+
+![JavaScript logo](./js.jpg)
+### JavaScript
+Nie mylić z Javą, ta nazwa jest zupełnie nieadekwatna
+
+Nie bez powodu umieściłem ten język na końcu. Ludzi dzieli się na dwa typy: Ci co kochają JS lub go nienawidzą. Sam język nie jest nowy, ale ostatnio przeżywa swój renesans, głównie za sprawą potrzeby lepszych aplikacji webowych i frameworka NodeJS.
+
+Każda nowoczesna strona wykorzystuje JS, bo to on ma monopol na kod wykonywany po stronie przeglądarki. To sprawiło też, że zaczęły powstawać frameworki do zawierania HTMLa, CSSa i JavaScriptu jako aplikacje mobilne czy okienkowe np. [React Native](https://facebook.github.io/react-native/), [Apache Cordova](https://cordova.apache.org/) czy [Electron](https://electron.atom.io/).
+
+NodeJS sprawił, że JS może być wykorzystywany jako backend (strona serwerowa) serwisów. Zatem czemu istnieją jeszcze inne języki (pomijając inne sekcje, brak natywności)? Otóż cały ten świat JavaScriptu to taki trochę jeden wielki eksperyment. Nie zdziwcie się jeśli coś będzie wam się wydawało absurdalne — problemy optymalizacji nie są rzadkością a nauka narzędzi do budowania aplikacji JSa to koszmar. Ahh... tak, JS jest interpretowany przez przeglądarkę, ale i tak powszechnie używa się kompilatorów aby kod był lepszy.
+
+### EOF
+Oczywiście to 4 języki to tylko moje propozycje oparte o własne doświadczenia. Wartych sprawdzenia jest o wiele więcej języków m.in. [Go](https://golang.org/), [Ruby](https://www.ruby-lang.org/pl/), [php](https://www.php.net/) czy nawet [Swift](https://developer.apple.com/swift/). Jeśli mój post nie pomógł wam i jest mi przykro z tego powodu to [tutaj](http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png) macie link na ciekawą infografikę związaną z tym dylematem.
+
+
