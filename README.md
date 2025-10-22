@@ -10,4 +10,4 @@ Currently working on the world's easiest visual programming language [@turbofuro
 
 Occasionally I write something on my blog or speak at a conference, but what a fun ride it is!
 
-Check out my [projects](https://pr0gramista.com/projects) and [godlike software, manual pages, gists, configs, keybindings and examples](https://github.com/pr0gramista/godlike).
+Check out my [website](https://pr0gramista.com) and [godlike software, manual pages, gists, configs, keybindings and examples](https://github.com/pr0gramista/godlike).

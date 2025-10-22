@@ -5,11 +5,11 @@ export type NavbarProps = {};
 
 export default function Navbar({}: NavbarProps) {
   return (
-    <nav className="bg-gray-900 p-4">
+    <nav className="p-4">
       <div className="mx-auto flex max-w-4xl items-center">
-        <Logo />
+        <Logo variant="dark" />
         <div className="flex-grow" />
-        <div className="flex gap-1 font-mono text-sm text-white sm:text-base md:gap-2">
+        <div className="flex gap-1 font-mono text-sm text-gray-900 sm:text-base md:gap-2">
           <span>{'['}</span>
           <Link className="hover:underline" href="/">
             About
@@ -19,9 +19,9 @@ export default function Navbar({}: NavbarProps) {
             Blog
           </Link>
           <span>{'|'}</span>
-          <Link className="hover:underline" href="/projects">
-            Projects
-          </Link>
+          <a className="hover:underline" href="https://github.com/pr0gramista">
+            GitHub
+          </a>
           <span>{']'}</span>
         </div>
       </div>

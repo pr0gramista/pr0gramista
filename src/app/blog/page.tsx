@@ -21,12 +21,11 @@ export default async function Blog({}: BlogProps) {
 
   return (
     <div className="mx-auto mt-6 max-w-4xl space-y-4">
-      <h1 className="mb-2 font-mono text-xl font-semibold leading-4 sm:text-3xl">
+      <h1 className="mb-4 block font-mono text-xl font-semibold leading-4 sm:text-3xl">
         Blog
       </h1>
       <p>
-        I do not write regularly, so this is more of a archive rather than a
-        blog.
+        I do not write regularly, so consider it as a personal archive. Enjoy!
       </p>
       <div className="grid gap-4 md:grid-cols-2">
         {articles.map((article) => {

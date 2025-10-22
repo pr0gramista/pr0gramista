@@ -8,13 +8,13 @@ import Layout from '@/components/Layout';
 const firaSans = Fira_Sans({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-fira',
+  variable: '--font-sans',
 });
 
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-roboto-mono',
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {

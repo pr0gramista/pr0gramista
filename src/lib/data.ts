@@ -1,9 +1,9 @@
-import imageAvatar from '@/images/avatar.jpg';
+import imageMe from '@/images/sweetfocia.jpg';
 
 export const me = {
   name: 'Bartosz Wiśniewski',
-  role: 'Senior Software Engineer',
-  image: { src: imageAvatar },
+  role: 'Software Developer',
+  image: { src: imageMe },
 };
 
 export const siteMetadata = {

@@ -1,17 +1,44 @@
 'use client';
 
-import Socials from './Socials';
+import { BlackBox, Gap } from './Decoration';
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-        <Socials />
-        <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-sm leading-5 text-gray-700">
-            &copy; Bartosz Wiśniewski
-          </p>
-        </div>
+    <footer className="bg-white pt-16">
+      <div className="flex"></div>
+      {/* Row 1 */}
+      <div className="flex">
+        <div className="flex-grow"></div>
+        <BlackBox />
+        <Gap w={6} />
+        <BlackBox />
+      </div>
+      {/* Row 2 */}
+      <div className="flex">
+        <BlackBox />
+        <div className="flex-grow"></div>
+        <BlackBox w={3} />
+        <Gap w={5} />
+        <BlackBox />
+      </div>
+      {/* Row 3 */}
+      <div className="flex">
+        <BlackBox w={6} />
+        <div className="flex-grow"></div>
+        <BlackBox w={5} />
+        <Gap w={3} />
+        <BlackBox w={2} />
+      </div>
+      {/* Row 4 */}
+      <div className="flex">
+        <BlackBox w={8} />
+        <div className="flex-grow"></div>
+        <BlackBox />
+        <Gap w={4} />
+        <BlackBox w={3} />
+      </div>
+      <div>
+        <BlackBox className="h-16 w-full" />
       </div>
     </footer>
   );

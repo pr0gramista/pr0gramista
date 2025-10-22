@@ -19,7 +19,7 @@ export const MdxComponents = {
     return (
       <div
         className={twMerge(
-          'rounded-4xl max-sm:-mx-6 group isolate my-10 overflow-hidden bg-neutral-100',
+          'group isolate my-10 overflow-hidden rounded-md bg-neutral-100 max-sm:-mx-6',
           caption && 'mb-1 mt-10',
           mini && 'my-0',
           icon && 'mb-2 mt-10 max-w-[128px]',
@@ -42,7 +42,7 @@ export const MdxComponents = {
     return (
       <div
         className={twMerge(
-          'max-sm:-mx-6 max-sm:flex max-sm:overflow-x-auto my-10',
+          'my-10 max-sm:-mx-6 max-sm:flex max-sm:overflow-x-auto',
           className,
         )}
       >
